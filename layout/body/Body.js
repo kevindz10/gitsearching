@@ -20,12 +20,18 @@ const Body = (props) => (
         </div>
         <div style={{paddingTop: 50}}> 
             <Row>
-                <Col md={4} style={{paddingBottom: 20}}>
-                
-                    <CardInfo 
-                       info={props.users}
-                    />
-                </Col>   
+
+            {props.listRepo && props.listRepo.map((data, idx) => {
+                 console.log('data while: ', data)
+
+                  return <Col key={idx} md={4} style={{paddingBottom: 20}}>
+                            <CardInfo 
+                            info={props.users}
+                            reponame={data.name}
+                            />
+                        </Col> ;
+                })}
+                 
             </Row>
         </div>    
         </div>     
@@ -35,7 +41,9 @@ const Body = (props) => (
   const mapStateToProps = (state) => {
     console.log('from body: ',state.searchingData);
    return{    
-      users: state.searchingData.listUsers 
+      users: state.searchingData.listUsers,
+      totalRepo: state.searchingData.totalPublica,
+      listRepo:  state.searchingData.listPublicaciones
  }};
  
 

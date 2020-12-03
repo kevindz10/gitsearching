@@ -4,35 +4,31 @@ import { Component } from 'react';
 import { BsFillBriefcaseFill } from "react-icons/bs";
 
 const propTypes = {
-    info: PropTypes.string    
+    info: PropTypes.string,
+    reponame: PropTypes.string  
   };
   
   const defaultProps = {
-    info: {}
+    info: {},
+    reponame:""
   };
   
 
 class Info extends Component{ 
     render(){
-        const { avatar_url, login, html_url, public_repos, ...attributes} = this.props.info;
+      const { info, reponame, ...attributes} = this.props;
+        const { avatar_url, login, html_url, public_repos} = info;
         console.log('props:',this.props.info)
         return(  
                
             <Card style={{ width: '18rem' }}>
             <Card.Img variant="top" src={avatar_url} />
-            <Card.Body>
+            <Card.Body style={{justifyContent: "center"}}>
                 <Card.Title>{login}</Card.Title>
-                <Container>
-                    <Row>
-                        <Col xs={6} md={4}>
-                            <h3 className="text-muted" > <BsFillBriefcaseFill/> </h3>
-                        </Col>
-                        <Col xs={6} md={4}>
-                            <h3> {public_repos}</h3>
-                        </Col>
-                    </Row>
-                    </Container>
-                <Card.Link href={html_url}>Ir a perfil</Card.Link>
+                <div>
+                  <span> {reponame}</span>
+                </div>                
+                <Card.Link href={html_url} className="d-flex justify-content-end">Ir a perfil</Card.Link>
             </Card.Body>
             </Card>
    

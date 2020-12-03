@@ -2,6 +2,8 @@
 
 const authDefaultState = {
     listUsers: [],
+    totalPublica: 0,
+    listPublicaciones: [],
     listRepos: [],
   };
   
@@ -11,6 +13,8 @@ const authDefaultState = {
             return {
               ...state,
               listUsers:action.listado,
+              totalPublica: action.total,
+              listPublicaciones: action.publicaciones
             };
         case 'FETCH_REPOS':
             return {
