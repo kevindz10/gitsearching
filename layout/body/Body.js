@@ -1,10 +1,14 @@
 
 import CardResul from "../../pages/components/card1/Results"
 import CardInfo from "../../pages/components/card2/Info"
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import {cleanAll} from '../src/redux/actions/searching';
 
 const Body = (props) => (    
+
+    
+
     <div className="container" style={{paddingTop: 80}}>  
         <div className="col-md-12">
         
@@ -44,5 +48,8 @@ const Body = (props) => (
       totalUsers: state.searchingData.totalUsers
  }};
  
+ const mapDispatchToProps = (dispatch) => ({ 
+    cleanAll: () => dispatch(cleanAll())
+  });
 
- export default connect(mapStateToProps)(Body);
+ export default connect(mapStateToProps, mapDispatchToProps)(Body);

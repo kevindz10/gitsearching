@@ -1,7 +1,6 @@
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { BsFillBriefcaseFill } from "react-icons/bs";
 
 const propTypes = {
     info: PropTypes.string,

@@ -29,7 +29,7 @@ const Header = (props) => {
         <Navbar.Collapse id="basic-navbar-nav">
             <Container>
                 <Form inline>
-                    <FormControl type="text" placeholder="Usuario o respositorio..." className="mr-sm-2" 
+                    <FormControl type="text" placeholder="Usuario ..." className="mr-sm-2" 
                     value={username}
                     onChange={onChangeHandler}
                     />

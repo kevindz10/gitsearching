@@ -14,6 +14,10 @@ export const fillRepo = (listado) => ({
   listado
 });
 
+export const cleanAll = () => ({
+  type: 'CLEAN_USERS'
+});
+
 export function fetchAllRepos(url, list) {
   return function(dispatch, getState) {
     const config = {
