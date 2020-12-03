@@ -7,7 +7,7 @@ const propTypes = {
     header: PropTypes.string,
     icon: PropTypes.string,
     color: PropTypes.string,
-    value: PropTypes.string,
+    value: PropTypes.number,
     
   };
   
@@ -15,7 +15,7 @@ const propTypes = {
     header: 'User',
     icon: "user",
     color: 'info',
-    value: "10"    
+    value: 0    
   };
   
 

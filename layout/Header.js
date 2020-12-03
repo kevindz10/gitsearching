@@ -18,6 +18,7 @@ const Header = (props) => {
   const submitHandler = e => {
     e.preventDefault();
     props.fetchUsers(username); 
+    setUsername('');
   };
 
   return (
@@ -44,7 +45,6 @@ const Header = (props) => {
   
 
   const mapStateToProps = (state) => {
-     console.log(state.searchingData);
     return{    
   }};
   

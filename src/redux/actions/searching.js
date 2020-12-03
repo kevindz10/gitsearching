@@ -5,7 +5,8 @@ export const fillUsers = (listado, total, publicaciones) => ({
   type: 'FETCH_USERS',
   listado,
   total,
-  publicaciones
+  publicaciones,
+  totalUsers: 1
 });
 
 export const fillRepo = (listado) => ({
@@ -21,7 +22,6 @@ export function fetchAllRepos(url, list) {
 
     axios.get(`${url}`, config).then(response => {
       const lista = response.data
-      console.log('lista namerep: ',lista)
       dispatch(fillUsers(list, lista.length, lista ));
     })
     .catch(error => {
@@ -38,7 +38,6 @@ export function fetchUsers(username) {
 
     axios.get(`${ROOT_URL}/users/${username}`, config).then(response => {
       const lisusers = response.data
-      console.log('listado: ',lisusers)
       dispatch(fetchAllRepos(lisusers.repos_url, lisusers))
      
     })
@@ -56,7 +55,6 @@ export function fetchRepos(namerepo) {
 
     axios.get(`${ROOT_URL}/repositories/${namerepo}`, config).then(response => {
       const listRepos = response.data
-      console.log('listado rep: ',listRepos)
       dispatch(fillRepo(listRepos));
     })
     .catch(error => {

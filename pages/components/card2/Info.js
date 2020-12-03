@@ -18,7 +18,6 @@ class Info extends Component{
     render(){
       const { info, reponame, ...attributes} = this.props;
         const { avatar_url, login, html_url, public_repos} = info;
-        console.log('props:',this.props.info)
         return(  
                
             <Card style={{ width: '18rem' }}>

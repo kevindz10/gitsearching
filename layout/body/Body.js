@@ -11,10 +11,10 @@ const Body = (props) => (
         <div>
             <Row>
                 <Col md={4}>
-                    <CardResul icon="user" color="warning" header="Usuarios" value="100"/>
+                    <CardResul icon="user" color="warning" header="Usuarios" value={props.totalUsers}/>
                 </Col>
                 <Col md={4}>
-                    <CardResul icon="repo" color="info" header="Repositorios" value="200"/>
+                    <CardResul icon="repo" color="info" header="Repositorios" value={props.totalRepo}/>
                 </Col>
             </Row>
         </div>
@@ -22,8 +22,6 @@ const Body = (props) => (
             <Row>
 
             {props.listRepo && props.listRepo.map((data, idx) => {
-                 console.log('data while: ', data)
-
                   return <Col key={idx} md={4} style={{paddingBottom: 20}}>
                             <CardInfo 
                             info={props.users}
@@ -39,11 +37,11 @@ const Body = (props) => (
   );
   
   const mapStateToProps = (state) => {
-    console.log('from body: ',state.searchingData);
    return{    
       users: state.searchingData.listUsers,
       totalRepo: state.searchingData.totalPublica,
-      listRepo:  state.searchingData.listPublicaciones
+      listRepo:  state.searchingData.listPublicaciones,
+      totalUsers: state.searchingData.totalUsers
  }};
  
 
