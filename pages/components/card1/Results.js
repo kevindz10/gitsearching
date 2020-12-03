@@ -1,4 +1,4 @@
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card, Row, Col, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
 import { BsPersonFill, BsFillBriefcaseFill } from "react-icons/bs";
@@ -24,18 +24,19 @@ class Results extends Component{
         const {className, cssModule, header, icon, color, value, ...attributes} = this.props;
         return(  
                
-            <Card style={{ width: '18rem'}} {...attributes}>
-                <Card.Body>
+            <Card style={{ width: '18rem'}}{...attributes}>
+                <Card.Body >
                     <Card.Title>{ header }</Card.Title>
-                    <Row>
-                        <Col>
-                            <h3 className="text-muted" >  {icon=="user" ? <BsPersonFill />: <BsFillBriefcaseFill/>} </h3>
-                        </Col>
-                        <Col>
-                            <h3> {value}</h3>
-                        </Col>
-                    
-                    </Row>
+                    <Container>
+                        <Row>
+                            <Col xs={6} md={4}>
+                                <h3 className="text-muted" >  {icon=="user" ? <BsPersonFill />: <BsFillBriefcaseFill/>} </h3>
+                            </Col>
+                            <Col xs={6} md={4}>
+                                <h3> {value}</h3>
+                            </Col>
+                        </Row>
+                    </Container>
                 </Card.Body>
             </Card>
    
