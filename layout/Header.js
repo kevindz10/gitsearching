@@ -1,44 +1,36 @@
 
 import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 const logo = require("../public/img/cat.png");
 import { Image,Container,Row, Col, Button, Navbar,Form, FormControl } from 'react-bootstrap';
-import { actionCreators as searchActions,
-    selector as searchSelector,
-  } from '../src/redux/features/searching';
 
-const Header = () => {
+import {fetchUsers} from '../src/redux/actions/searching';
+
+const Header = (props) => {
 
   const [data, setData] = useState({});
   const [username, setUsername] = useState("");
   const [repositories, setRepositories] = useState([]);
   
-  const dispatch = useDispatch();
-  
-  useEffect(() => {
-      dispatch(searchActions.list())
-  }, [dispatch])
 
   const onChangeHandler = e => {
     setUsername(e.target.value);
   };
   
   
-  const submitHandler = async e => {
+  const submitHandler = e => {
     e.preventDefault();
 
-    const profile = await fetch(`https://api.github.com/users/${username}`);
-    const profileJson = await profile.json();
-    // console.log(profileJson);
-
-    const repositories = await fetch(profileJson.repos_url);
-    const repoJson = await repositories.json();
-    console.log(repoJson);
-
-    if (profileJson) {
-      setData(profileJson);
+    //const profile = await fetch(`https://api.github.com/users/${username}`);
+    //const profileJson = await profile.json();
+    const repositories = await props.fetchUsers(username);
+    //const repoJson = await repositories.json();
+    console.log('props', props);
+    
+    //if (profileJson) {
+      //setData(profileJson);
       setRepositories(repoJson);
-    }
+    //}
   };
 
   return (
@@ -63,4 +55,14 @@ const Header = () => {
   );
 };
   
-  export default Header;
+
+  const mapStateToProps = (state) => {
+     console.log(state.searchingData);
+    return{    
+  }};
+  
+  const mapDispatchToProps = (dispatch) => ({
+    fetchUsers: (username) => dispatch(fetchUsers(username)),
+  });
+  
+  export default connect(mapStateToProps, mapDispatchToProps)(Header);
