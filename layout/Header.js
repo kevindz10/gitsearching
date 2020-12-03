@@ -4,7 +4,7 @@ const logo = require("../public/img/cat.png");
 import { Image,Container,Row, Col, Button, Navbar,Form, FormControl } from 'react-bootstrap';
 
 const Header = () => (
-    <Navbar bg="dark" expand="lg">
+    <Navbar bg="dark" expand="lg" fixed="top">
         <Image src={logo} height={50} />
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
