@@ -4,7 +4,7 @@ import { Component } from 'react';
 import { BsPersonFill, BsFillBriefcaseFill } from "react-icons/bs";
 
 const propTypes = {
-    header: PropTypes.string,
+    user: PropTypes.string,
     icon: PropTypes.string,
     value: PropTypes.string,
     img: PropTypes.string,
@@ -12,7 +12,7 @@ const propTypes = {
   };
   
   const defaultProps = {
-    header: 'User',
+    user: 'User',
     icon: "user",
     value: "10"
   };
@@ -20,7 +20,7 @@ const propTypes = {
 
 class Info extends Component{ 
     render(){
-        const { header, icon, value, ...attributes} = this.props;
+        const { user, icon, value, ...attributes} = this.props;
         return(  
                
             <Card style={{ width: '18rem' }}>

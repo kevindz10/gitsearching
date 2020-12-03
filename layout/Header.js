@@ -1,14 +1,24 @@
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 const logo = require("../public/img/cat.png");
 import { Image,Container,Row, Col, Button, Navbar,Form, FormControl } from 'react-bootstrap';
+import { actionCreators as searchActions,
+    selector as searchSelector,
+  } from '../src/redux/features/searching';
 
 const Header = () => {
 
-    const [data, setData] = useState({});
+  const [data, setData] = useState({});
   const [username, setUsername] = useState("");
   const [repositories, setRepositories] = useState([]);
   
+  const dispatch = useDispatch();
+  
+  useEffect(() => {
+      dispatch(searchActions.list())
+  }, [dispatch])
+
   const onChangeHandler = e => {
     setUsername(e.target.value);
   };

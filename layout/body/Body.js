@@ -5,7 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Body = () => (    
     <div className="container" style={{paddingTop: 80}}>  
-        <div class="col-md-12">
+        <div className="col-md-12">
         
         <div>
             <Row>
@@ -20,27 +20,14 @@ const Body = () => (
         <div style={{paddingTop: 50}}> 
             <Row>
                 <Col md={4} style={{paddingBottom: 20}}>
-                    <CardInfo />
-                </Col>
-                <Col md={4}>
-                    <CardInfo />
-                </Col>
-                <Col md={4}>
-                    <CardInfo />
-                </Col>
-                <Col md={4}>
-                    <CardInfo />
-                </Col>
-                <Col md={4}>
-                    <CardInfo />
-                </Col>
-                <Col md={4}>
-                    <CardInfo />
-                </Col>
-                <Col md={4}>
-                    <CardInfo />
-                </Col>
-
+                    <CardInfo 
+                        user="User"
+                        icon= "user"
+                        value ="10"
+                        img=""
+                        repo=""
+                    />
+                </Col>   
             </Row>
         </div>    
         </div>     
