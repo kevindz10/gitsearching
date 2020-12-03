@@ -1,9 +1,16 @@
-# gitsearching
+# GITHUB SEARCHING
+Buscador de usuarios en github
 
-# Frontend Technical Test
+### Prerequisitos
 
-# Description:
+- Node.js (v10 o mayor)
+- `npm` (v6.5 o mayor)
+- `yarn` (v1.14 oo mayor)
 
-Develop an application that uses the Github API for searching users and repositories.
-The application must have 2 routes: user search and repositories search with the corresponding navigation.
-These routes must have a search bar and the search results must appear on the same page.
+### Instalación
+
+- Desarrollo
+
+    ```bash
+    $ yarn install
+    $ yarn dev
