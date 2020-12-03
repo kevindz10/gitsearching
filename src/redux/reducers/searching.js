@@ -12,10 +12,10 @@ const authDefaultState = {
               ...state,
               listUsers:action.listado,
             };
-        case 'FETCH_USERS':
+        case 'FETCH_REPOS':
             return {
                 ...state,
-                listUsers:action.listado,
+                listRepos:action.listado,
             };
       default:
         return state;

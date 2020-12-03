@@ -2,8 +2,9 @@
 import CardResul from "../../pages/components/card1/Results"
 import CardInfo from "../../pages/components/card2/Info"
 import { Container, Row, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
-const Body = () => (    
+const Body = (props) => (    
     <div className="container" style={{paddingTop: 80}}>  
         <div className="col-md-12">
         
@@ -20,12 +21,9 @@ const Body = () => (
         <div style={{paddingTop: 50}}> 
             <Row>
                 <Col md={4} style={{paddingBottom: 20}}>
+                
                     <CardInfo 
-                        user="User"
-                        icon= "user"
-                        value ="10"
-                        img=""
-                        repo=""
+                       info={props.users}
                     />
                 </Col>   
             </Row>
@@ -34,4 +32,11 @@ const Body = () => (
     </div>       
   );
   
-  export default Body;
+  const mapStateToProps = (state) => {
+    console.log('from body: ',state.searchingData);
+   return{    
+      users: state.searchingData.listUsers 
+ }};
+ 
+
+ export default connect(mapStateToProps)(Body);

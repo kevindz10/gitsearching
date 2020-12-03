@@ -1,37 +1,38 @@
 import { Card, Row, Col, Container } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { Component } from 'react';
-import { BsPersonFill, BsFillBriefcaseFill } from "react-icons/bs";
+import { BsFillBriefcaseFill } from "react-icons/bs";
 
 const propTypes = {
-    user: PropTypes.string,
-    icon: PropTypes.string,
-    value: PropTypes.string,
-    img: PropTypes.string,
-    repo: PropTypes.string
+    info: PropTypes.string    
   };
   
   const defaultProps = {
-    user: 'User',
-    icon: "user",
-    value: "10"
+    info: {}
   };
   
 
 class Info extends Component{ 
     render(){
-        const { user, icon, value, ...attributes} = this.props;
+        const { avatar_url, login, html_url, public_repos, ...attributes} = this.props.info;
+        console.log('props:',this.props.info)
         return(  
                
             <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
+            <Card.Img variant="top" src={avatar_url} />
             <Card.Body>
-                <Card.Title>Card Title</Card.Title>
-                <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
-                </Card.Text>
-               
+                <Card.Title>{login}</Card.Title>
+                <Container>
+                    <Row>
+                        <Col xs={6} md={4}>
+                            <h3 className="text-muted" > <BsFillBriefcaseFill/> </h3>
+                        </Col>
+                        <Col xs={6} md={4}>
+                            <h3> {public_repos}</h3>
+                        </Col>
+                    </Row>
+                    </Container>
+                <Card.Link href={html_url}>Ir a perfil</Card.Link>
             </Card.Body>
             </Card>
    

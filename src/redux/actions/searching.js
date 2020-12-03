@@ -6,8 +6,12 @@ export const fillUsers = (listado) => ({
   listado
 });
 
+export const fillRepo = (listado) => ({
+  type: 'FETCH_REPOS',
+  listado
+});
+
 export function fetchUsers(username) {
-  //const token = localStorage.getItem('token');
   return function(dispatch, getState) {
     const config = {
       params: {}
@@ -17,6 +21,23 @@ export function fetchUsers(username) {
       const lisusers = response.data
       console.log('listado: ',lisusers)
       dispatch(fillUsers(lisusers));
+    })
+    .catch(error => {
+        console.log(error)
+    });
+  }
+}
+
+export function fetchRepos(namerepo) {
+  return function(dispatch, getState) {
+    const config = {
+      params: {}
+    }
+
+    axios.get(`${ROOT_URL}/repositories/${namerepo}`, config).then(response => {
+      const listRepos = response.data
+      console.log('listado rep: ',listRepos)
+      dispatch(fillRepo(listRepos));
     })
     .catch(error => {
         console.log(error)

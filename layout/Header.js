@@ -2,17 +2,14 @@
 import React, { useState, useEffect } from "react";
 import { connect } from 'react-redux';
 const logo = require("../public/img/cat.png");
-import { Image,Container,Row, Col, Button, Navbar,Form, FormControl } from 'react-bootstrap';
+import { Image,Container,Button, Navbar,Form, FormControl } from 'react-bootstrap';
 
-import {fetchUsers} from '../src/redux/actions/searching';
+import {fetchUsers, fetchRepos} from '../src/redux/actions/searching';
 
 const Header = (props) => {
 
-  const [data, setData] = useState({});
   const [username, setUsername] = useState("");
-  const [repositories, setRepositories] = useState([]);
   
-
   const onChangeHandler = e => {
     setUsername(e.target.value);
   };
@@ -20,17 +17,7 @@ const Header = (props) => {
   
   const submitHandler = e => {
     e.preventDefault();
-
-    //const profile = await fetch(`https://api.github.com/users/${username}`);
-    //const profileJson = await profile.json();
-    const repositories = await props.fetchUsers(username);
-    //const repoJson = await repositories.json();
-    console.log('props', props);
-    
-    //if (profileJson) {
-      //setData(profileJson);
-      setRepositories(repoJson);
-    //}
+    props.fetchUsers(username); 
   };
 
   return (
@@ -61,8 +48,9 @@ const Header = (props) => {
     return{    
   }};
   
-  const mapDispatchToProps = (dispatch) => ({
+  const mapDispatchToProps = (dispatch) => ({ 
     fetchUsers: (username) => dispatch(fetchUsers(username)),
+    fetchRepos: (reponame) => dispatch(fetchRepos(reponame)),
   });
   
   export default connect(mapStateToProps, mapDispatchToProps)(Header);
